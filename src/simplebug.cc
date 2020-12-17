@@ -22,7 +22,7 @@
 #include <utility>
 
 #ifdef _WIN32
-#define VISBLE __declspec(dllexport) EventManager
+#define VISIBLE __declspec(dllexport)
 #else
 #define VISIBLE 
 #endif
