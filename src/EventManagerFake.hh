@@ -23,26 +23,12 @@
 #include <unordered_map>
 #include <utility>
 
-#include <ignition/common/Console.hh>
 #include <ignition/common/Event.hh>
 
 namespace ignition
 {
   namespace gazebo
   {
-    // Inline bracket to help doxygen filtering.
-    inline namespace IGNITION_GAZEBO_VERSION_NAMESPACE {
-    // Forward declarations.
-    class EventManagerPrivate;
-
-    /// \brief The EventManager is used to send/receive notifications of
-    /// simulator events.
-    ///
-    /// The simulator environment and corresponding systems can either connect
-    /// to an Event or emit an Event as needed to signal actions that need to
-    /// occur.
-    ///
-    /// See \ref ignition::gazebo::events for a complete list of events.
     class EventManager
     {
       /// \brief Constructor
@@ -77,7 +63,6 @@ namespace ignition
                                   std::unique_ptr<ignition::common::Event>,
                                   Hasher, EqualTo> events;
     };
-    }
   }
 }
 

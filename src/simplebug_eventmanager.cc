@@ -15,7 +15,7 @@
  *
 */
 
-#include "EventManagerFake.hh"
+#include "EventManager.hh"
 
 int main()
 {
