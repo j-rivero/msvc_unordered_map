@@ -15,10 +15,55 @@
  *
 */
 
-#include "EventManager.hh"
+#include <functional>
+#include <memory>
+#include <typeinfo>
+#include <unordered_map>
+#include <utility>
+
+#ifdef _WIN32
+#define VISBLE __declspec(dllexport) EventManager
+#else
+#define VISIBLE 
+#endif
+
+class VISIBLE EventManager
+{
+  /// \brief Constructor
+  public: EventManager() = default;
+
+  /// \brief Destructor
+  public: ~EventManager() = default;
+
+  /// \brief Convenience type for storing typeinfo references.
+  private: using TypeInfoRef = std::reference_wrapper<const std::type_info>;
+
+  /// \brief Hash functor for TypeInfoRef
+  private: struct Hasher
+           {
+             std::size_t operator()(TypeInfoRef _code) const
+             {
+               return _code.get().hash_code();
+             }
+           };
+
+  /// \brief Equality functor for TypeInfoRef
+  private: struct EqualTo
+           {
+             bool operator()(TypeInfoRef _lhs, TypeInfoRef _rhs) const
+             {
+               return _lhs.get() == _rhs.get();
+             }
+           };
+
+  /// \brief Container of used signals.
+  private: std::unordered_map<TypeInfoRef,
+                              std::unique_ptr<std::string>,
+                              Hasher, EqualTo> events;
+};
 
 int main()
 {
-    ignition::gazebo::EventManager e;
+    EventManager e;
     return 0;
 }
