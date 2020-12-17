@@ -11,8 +11,6 @@ project(test_bug VERSION 1.0.0)
 # If you get an error at this line, you need to install ignition-cmake
 find_package(ignition-cmake2 2.3 REQUIRED)
 
-ign_find_package(ignition-common3 VERSION 3.5 REQUIRED)
-
 #============================================================================
 # Configure the project
 #============================================================================
