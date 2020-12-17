@@ -23,7 +23,7 @@
 #include <unordered_map>
 #include <utility>
 
-#include "Event.hh"
+#include <ignition/common/Event.hh>
 
 namespace ignition
 {
